@@ -22,10 +22,7 @@ exports = module.exports = function () {
 
 // Maintain tape compatibility
 for (var exp in tape) {
-  if (exp != 'test' && tape.hasOwnProperty(exp)) {
+  if (tape.hasOwnProperty(exp)) {
     exports[exp] = tape[exp]
   }
 }
-
-// Maintain tap compatibility
-exports.test = exports
