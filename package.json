@@ -21,7 +21,7 @@
     "url": "https://github.com/michaelrhodes/tape-catch/issues"
   },
   "homepage": "https://github.com/michaelrhodes/tape-catch",
-  "dependencies": {
-    "tape": "^3.0.3"
+  "peerDependencies": {
+    "tape": "*"
   }
 }
