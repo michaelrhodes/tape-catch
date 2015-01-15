@@ -20,7 +20,8 @@ test('cause an exception', function (assert) {
 test('still run this test', function (assert) {
   assert.equal(1 + 1, 2, 'this still ran')
   assert.end() 
-})```
+})
+```
 
 ## license
 [MIT](http://opensource.org/licenses/MIT)
