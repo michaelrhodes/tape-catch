@@ -1,17 +1,17 @@
-var tape = require('tape')
+var test = require('tape')
 
 exports = module.exports = function (name, fn) {
-  tape(name, function (assert) {
+  test(name, function (t) {
     try {
       fn.apply(this, arguments)
     }
     catch (err) {
-      assert.error(err)
-      assert.end()
+      t.error(err)
+      t.end()
     }
   })
 }
 
 // Maintain tap compatibility
 exports.test = exports
-exports.tape = tape
+exports.tape = test
