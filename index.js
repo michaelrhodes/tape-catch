@@ -14,4 +14,3 @@ exports = module.exports = function (name, fn) {
 
 // Maintain tap compatibility
 exports.test = exports
-exports.tape = test
