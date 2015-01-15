@@ -1,7 +1,15 @@
-var test = require('tape')
+var tape = require('tape')
+var slice = Array.prototype.slice
 
-exports = module.exports = function (name, fn) {
-  test(name, function (t) {
+exports = module.exports = function () {
+  var args = slice.call(arguments)
+  var fn = args.pop()
+  tape.apply(tape, args.concat(test))
+
+  function test (t) {
+    if (typeof fn != 'function') {
+      return t.end()
+    }
     try {
       fn.apply(this, arguments)
     }
@@ -9,7 +17,14 @@ exports = module.exports = function (name, fn) {
       t.error(err)
       t.end()
     }
-  })
+  }
+}
+
+// Maintain tape compatibility
+for (var exp in tape) {
+  if (exp != 'test' && tape.hasOwnProperty(exp)) {
+    exports[exp] = tape[exp]
+  }
 }
 
 // Maintain tap compatibility
