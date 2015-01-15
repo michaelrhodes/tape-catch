@@ -1,0 +1,27 @@
+{
+  "name": "tape-catch",
+  "version": "1.0.0",
+  "description": "a wrapper around tape that catches and reports exceptions",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/michaelrhodes/tape-catch.git"
+  },
+  "keywords": [
+    "tape",
+    "exception",
+    "catch"
+  ],
+  "author": "Michael Rhodes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/michaelrhodes/tape-catch/issues"
+  },
+  "homepage": "https://github.com/michaelrhodes/tape-catch",
+  "dependencies": {
+    "tape": "^3.0.3"
+  }
+}
