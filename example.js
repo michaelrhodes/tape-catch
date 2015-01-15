@@ -1,7 +1,6 @@
 var test = require('./')
 
 test('cause an exception', function (assert) {
-  assert.plan(5)
   asdf
 })
 
