@@ -1,28 +1,21 @@
 var tape = require('tape')
-var slice = Array.prototype.slice
 
-exports = module.exports = function () {
-  var args = slice.call(arguments)
-  var fn = args.pop()
-  tape.apply(tape, args.concat(test))
-
-  function test (t) {
-    if (typeof fn != 'function') {
-      return t.end()
-    }
-    try {
-      fn.apply(this, arguments)
-    }
-    catch (err) {
-      t.error(err)
-      t.end()
-    }
+exports = module.exports = tape
+exports.Test.prototype.run = function () {
+  if (!this._cb || this._skip) {
+    return this._end()
   }
-}
 
-// Maintain tape compatibility
-for (var exp in tape) {
-  if (tape.hasOwnProperty(exp)) {
-    exports[exp] = tape[exp]
+  this.emit('prerun')
+
+  try {
+    this._cb(this)
   }
+  catch (err) {
+    this.error(err)
+    this._end()
+    return
+  }
+
+  this.emit('run') 
 }
