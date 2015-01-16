@@ -1,6 +1,7 @@
 node_modules
 test/*
-!test/catch-exceptions.js
+!test/catch-exceptions*
+
 *.log
 *.swp
 .DS*
