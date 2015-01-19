@@ -25,5 +25,31 @@ test('still run this test', function (assert) {
 })
 ```
 
+```
+TAP version 13
+# cause an exception
+not ok 1 ReferenceError: asdf is not defined
+  ---
+    operator: error
+    expected: undefined
+    actual:   {}
+    stack:
+      ReferenceError: asdf is not defined
+        at Test.<anonymous> (/path/to/example.js:4:3)
+        at Test.bound [as _cb] (/path/to/node_modules/tape/lib/test.js:59:32)
+        at Test.exports.Test.run (/path/to/index.js:17:10)
+        at Test.bound [as run] (/path/to/node_modules/tape/lib/test.js:59:32)
+        at Object.next [as _onImmediate] (/path/to/node_modules/tape/lib/results.js:66:15)
+        at processImmediate [as _immediateCallback] (timers.js:345:15)
+  ...
+# still run this test
+ok 2 this still ran
+
+1..2
+# tests 2
+# pass  1
+# fail  1
+```
+
 ## license
 [MIT](http://opensource.org/licenses/MIT)
