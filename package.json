@@ -7,7 +7,7 @@
     "copy-tape-tests": "bin/copy-tape-tests.js",
     "tape-tests": "npm run copy-tape-tests && tap test/*.js",
     "test:browser": "testling -u",
-    "test:node": "tap test/catch-exceptions/*.js",
+    "test:node": "tap test/catch-exceptions.js",
     "test": "npm run test:node"
   },
   "testling": {
