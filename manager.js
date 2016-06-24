@@ -22,11 +22,15 @@ Manager.prototype.remove = function (test) {
 Manager.prototype.killall = function (err) {
   var test
   var tests = this.tests.slice()
+  if (!tests.length) return false
+
   var single = tests.length === 1
   while (test = tests.shift()) {
     if (single) test.error(err)
     test._end()
   }
+
+  return true
 }
 
 module.exports = Manager

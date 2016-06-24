@@ -28,3 +28,5 @@ test('still run this test', function (assert) {
     assert.equal(1 + 1, 2, 'this still ran');
     assert.end();
 });
+
+eval('cause an exception outside of a tape block');

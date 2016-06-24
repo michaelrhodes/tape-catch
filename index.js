@@ -1,6 +1,7 @@
 var tape = require('tape')
 var global = require('global')
 var tests = require('./manager')()
+var harness
 
 exports = module.exports = tape
 
@@ -32,10 +33,28 @@ exports.Test.prototype.run = function () {
   this.emit('run') 
 }
 
+
+var createHarness = exports.createHarness
+exports.createHarness = function () {
+  harness = createHarness.apply(this, arguments)
+  return harness
+}
+
 process.browser ?
   global.onerror = killall :
   process.on('uncaughtException', killall)
 
 function killall (err) {
-  tests.killall(err)
+  if (tests.killall(err)) return
+
+  // Died outside of a test block
+  harness ?
+    harness('uncaughtException', die) :
+    tape('uncaughtException', die)
+
+  function die (test) {
+    test.error(err)
+    test.end()
+  }
 }
+

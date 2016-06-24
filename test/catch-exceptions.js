@@ -16,15 +16,15 @@ test('catch exceptions', function (t) {
             });
             ps.stdout.pipe(concat(function (body) {
               var results = body.toString();
-              if (/ReferenceError/.test(results)) {
+              if (/(Reference|Syntax)Error/.test(results)) {
                   t.pass('reported exception');
               }
               var tests = (/# tests\s+([0-9]+)/.exec(results) || [])[1];
               var pass = (/# pass\s+([0-9]+)/.exec(results) || [])[1];
               var fail = (/# fail\s+([0-9]+)/.exec(results) || [])[1];
-              t.equal(tests, '4');
+              t.equal(tests, '5');
               t.equal(pass, '1'); 
-              t.equal(fail, '3'); 
+              t.equal(fail, '4');
             }));
         });
     });
