@@ -33,7 +33,6 @@ exports.Test.prototype.run = function () {
   this.emit('run') 
 }
 
-
 var createHarness = exports.createHarness
 exports.createHarness = function () {
   harness = createHarness.apply(this, arguments)
